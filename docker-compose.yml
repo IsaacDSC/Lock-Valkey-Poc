@@ -1,0 +1,12 @@
+services:
+  valkey:
+    image: valkey/valkey:8-alpine
+    ports:
+      - "6378:6379"
+    # Protocolo RESP compatível com clientes Redis; dados em volume opcional
+    volumes:
+      - valkey-data:/data
+    command: ["valkey-server", "--appendonly", "yes"]
+
+volumes:
+  valkey-data:
